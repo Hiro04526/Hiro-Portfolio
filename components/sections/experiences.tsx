@@ -87,7 +87,7 @@ export function ExperienceSection() {
   const [selectedExperience, setSelectedExperience] = useState<Experience | null>(null);
 
   return (
-    <section id="experiences" className="py-24 bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen">
+    <section id="experiences" className="py-12 bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen">
       <div className="container px-4 mx-auto">
         <motion.div
           initial="hidden"

@@ -40,7 +40,7 @@ export function AboutSection() {
   const [showBio, setShowBio] = useState(false)
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-br from-background to-secondary/30 overflow-hidden">
+    <section id="about" className="py-12 bg-gradient-to-br from-background to-secondary/30 overflow-hidden">
       <div className="container px-4 mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,7 +59,7 @@ export function AboutSection() {
               className="relative aspect-square rounded-2xl overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1288&auto=format&fit=crop"
+                src="/assets/myimage2.jpg"
                 alt="Profile"
                 fill
                 className="object-cover"

@@ -63,7 +63,7 @@ export function ProjectSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-24 bg-gradient-to-br from-background to-secondary/30 transition-colors duration-300 overflow-hidden">
+    <section id="projects" className="py-12 bg-gradient-to-br from-background to-secondary/30 transition-colors duration-300 overflow-hidden">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -76,13 +76,13 @@ export function ProjectSection() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-secondary/20 to-background animate-pulse" />
         </div>
 
-        <div className="container mx-auto px-4 z-10">
-          <div className="text-center mb-12">
+        <div className="container mx-auto px-4 mb-6 z-10">
+          <div className="text-center mb-4">
             <motion.h2
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
+              className="text-5xl font-bold mt-4 mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
             >
               Featured Projects
             </motion.h2>
