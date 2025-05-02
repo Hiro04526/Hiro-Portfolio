@@ -12,6 +12,7 @@ export function HeroSection() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
+      id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Animated background */}

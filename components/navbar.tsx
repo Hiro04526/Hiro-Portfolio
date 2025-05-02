@@ -17,7 +17,7 @@ const navItems = [
   { name: "Contact", path: "/#contact" },
 ]
 
-const useActiveHash = () => {
+export const useActiveHash = () => {
   const [activeHash, setActiveHash] = useState("#home")
 
   useEffect(() => {
@@ -25,24 +25,36 @@ const useActiveHash = () => {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute("id")
-            if (id) {
-              setActiveHash(`#${id}`)
-              break
-            }
-          }
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+
+        if (visible.length > 0) {
+          const id = visible[0].target.getAttribute("id")
+          if (id) setActiveHash(`#${id}`)
         }
       },
       {
-        rootMargin: "0px 0px -60% 0px",
-        threshold: 0.2,
+        rootMargin: "-40% 0px -40% 0px",
+        threshold: 0.1,
       }
     )
 
     sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
+
+    const onHashChange = () => {
+      const id = window.location.hash.slice(1)
+      if (document.getElementById(id)) {
+        setActiveHash(`#${id}`)
+      }
+    }
+
+    window.addEventListener("hashchange", onHashChange)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener("hashchange", onHashChange)
+    }
   }, [])
 
   return activeHash
