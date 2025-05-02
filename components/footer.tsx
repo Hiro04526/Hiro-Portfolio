@@ -1,9 +1,32 @@
 'use client'
 
-import { Github, Linkedin, Mail, Twitter, Users } from 'lucide-react'
+import { Linkedin, Mail, Users } from 'lucide-react'
+import { siGithub, siInstagram } from "simple-icons/icons";
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 import Image from 'next/image'
+
+const SimpleIcon = ({ icon, className = "" }: { icon: any; className?: string }) => (
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    className={`w-5 h-5 fill-current ${className}`}
+  >
+    <title>{icon.title}</title>
+    <path d={icon.path} />
+  </svg>
+);
+
+const SocialIcon = ({ icon, className }: { icon: any; className?: string }) => {
+  if (icon?.path) {
+    // It's a simple-icons object
+    return <SimpleIcon icon={icon} className={className} />;
+  }
+  // It's a Lucide icon component
+  const LucideIcon = icon;
+  return <LucideIcon className={`w-5 h-5 ${className}`} />;
+};
 
 export function Footer() {
   const [textColors, setTextColors] = useState(['text-blue-500', 'text-green-500', 'text-yellow-500', 'text-purple-500', 'text-pink-500'])
@@ -56,8 +79,8 @@ export function Footer() {
           <div className="text-center md:text-left flex flex-col items-center md:items-start">
             <div className="mb-4 relative group">
               <Image
-                src="https://tinyurl.com/25l56ouh"
-                alt="Aniruddha Adak"
+                src="/assets/myimage.JPG"
+                alt="Hiro Ishikawa"
                 width={100}
                 height={100}
                 className="rounded-full border-4 border-primary shadow-lg transition-all duration-300 hover:scale-110 group-hover:shadow-primary/50"
@@ -66,20 +89,18 @@ export function Footer() {
               <div className={`absolute -inset-2 rounded-full opacity-50 animate-pulse bg-gradient-to-r ${glowColors[profileGlow]} blur-md transition-all duration-1000`}></div>
               <div className="absolute -inset-2 rounded-full opacity-25 animate-ping bg-gradient-to-r from-primary via-secondary to-primary"></div>
             </div>
-            {[ 
-              "© 2024 Folio Motion. All rights reserved.",
-              "Created by ANIRUDDHA ADAK",
-              "Phone: +917029155691",
-              "Email: aniruddhaadak80@gmail.com"
+            {[
+              "Phone: +639770349859",
+              "Email: 21hiro44@gmail.com"
             ].map((text, index) => (
               <p
                 key={index}
                 className={`mt-1 text-sm font-medium ${textColors[index]} transition-colors duration-500 ease-in-out animate-pulse hover:scale-105 transform`}
               >
                 {text.startsWith('Phone:') ? (
-                  <>Phone: <a href="tel:+917029155691" className="hover:underline hover:text-primary transition-colors duration-300">+917029155691</a></>
+                  <>Phone: <a href="tel:+639770349859" className="hover:underline hover:text-primary transition-colors duration-300">+639770349859</a></>
                 ) : text.startsWith('Email:') ? (
-                  <>Email: <a href="mailto:aniruddhaadak80@gmail.com" className="hover:underline hover:text-primary transition-colors duration-300">aniruddhaadak80@gmail.com</a></>
+                  <>Email: <a href="mailto:21hiro44@gmail.com" className="hover:underline hover:text-primary transition-colors duration-300">21hiro44@gmail.com</a></>
                 ) : text}
               </p>
             ))}
@@ -87,11 +108,10 @@ export function Footer() {
           <div className="flex flex-col items-center space-y-4">
             <div className="flex space-x-4">
               {[ 
-                { icon: Github, href: "https://github.com/aniruddhaadak80", color: "text-purple-500" },
-                { icon: Linkedin, href: "https://linkedin.com/in/aniruddha-adak", color: "text-blue-500" },
-                { icon: Twitter, href: "https://twitter.com/aniruddha_adak", color: "text-sky-500" },
-                { icon: Mail, href: "mailto:aniruddhaadak80@gmail.com", color: "text-red-500" },
-                { icon: Users, href: "#contributors", color: "text-green-500" }
+                { icon: siGithub, href: "https://github.com/Hiro04526", color: "text-purple-500" },
+                { icon: Linkedin, href: "https://linkedin.com/in/hiro-ishikawa", color: "text-blue-500" },
+                { icon: siInstagram, href: "https://www.instagram.com/hir0__0/", color: "text-pink-500" },
+                { icon: Mail, href: "mailto:21hiro44@gmail.com", color: "text-red-500" }
               ].map((social, index) => (
                 <Button
                   key={index}
@@ -105,7 +125,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="relative"
                   >
-                    <social.icon className={`h-5 w-5 transition-all duration-300 ${social.color}`} />
+                    <SocialIcon icon={social.icon} className={social.color} />
                     <span className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping bg-current"></span>
                     <span className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-25 transition-opacity duration-300 bg-current blur-sm"></span>
                   </a>

@@ -65,12 +65,6 @@ export function AboutSection() {
                 className="object-cover"
                 priority
               />
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-              />
             </motion.div>
             <motion.div
               className="absolute -bottom-4 -left-4 w-24 h-24 bg-secondary rounded-full"
@@ -230,7 +224,6 @@ export function AboutSection() {
 
         {/* Glowing orbs */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-4xl opacity-30 pointer-events-none">
-          <div className="absolute top-0 left-0 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl animate-blob" />
           <div className="absolute top-0 right-0 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" />
           <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" />
         </div>
