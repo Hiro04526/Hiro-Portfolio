@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronRight, ChevronDown, X } from 'lucide-react'
 import { GlobalStyles } from '@mui/material';
+import { siReact, siCss3, siJavascript, siTypescript, siPython } from "simple-icons/icons";
 
 const scrollbarStyles = (
   <GlobalStyles
@@ -26,10 +27,22 @@ const scrollbarStyles = (
   />
 );
 
+const SimpleIcon = ({ icon, className = "" }: { icon: any; className?: string }) => (
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    className={`w-5 h-5 fill-current ${className}`}
+  >
+    <title>{icon.title}</title>
+    <path d={icon.path} />
+  </svg>
+);
+
 interface Skill {
   name: string
   level: number
-  icon: string
+  icon: any
   description: string
   projects: string[]
 }
@@ -43,59 +56,38 @@ export  function SkillSection() {
     { 
       name: "React", 
       level: 90, 
-      icon: "react-icon", 
+      icon: siReact, 
       description: "Building interactive UIs with React",
       projects: ["E-commerce Platform", "Social Media Dashboard", "Portfolio Website"]
     },
     { 
-      name: "Node.js", 
-      level: 85, 
-      icon: "nodejs-icon", 
-      description: "Server-side JavaScript with Node.js",
-      projects: ["RESTful API", "Real-time Chat Application", "Task Management System"]
-    },
-    { 
       name: "CSS", 
       level: 80, 
-      icon: "css-icon", 
+      icon: siCss3, 
       description: "Styling web applications with CSS",
       projects: ["Responsive Landing Page", "CSS Animation Library", "Custom UI Component Kit"]
     },
     { 
       name: "JavaScript", 
       level: 95, 
-      icon: "js-icon", 
+      icon: siJavascript, 
       description: "Core language for web development",
       projects: ["Interactive Data Visualization", "Browser Extension", "JavaScript Game Engine"]
     },
     { 
       name: "TypeScript", 
       level: 90, 
-      icon: "ts-icon", 
+      icon: siTypescript, 
       description: "Typed superset of JavaScript",
       projects: ["Enterprise-level CRM", "TypeScript Library", "Angular Application"]
     },
     { 
-      name: "GraphQL", 
-      level: 75, 
-      icon: "graphql-icon", 
-      description: "Efficient API queries with GraphQL",
-      projects: ["GraphQL API Gateway", "Real-time Data Subscription", "GraphQL Client Integration"]
-    },
-    { 
       name: "Python", 
       level: 70, 
-      icon: "python-icon", 
+      icon: siPython, 
       description: "Versatile programming language",
       projects: ["Data Analysis Tool", "Machine Learning Model", "Web Scraping Script"]
-    },
-    { 
-      name: "Docker", 
-      level: 65, 
-      icon: "docker-icon", 
-      description: "Containerization for applications",
-      projects: ["Microservices Architecture", "CI/CD Pipeline", "Development Environment Setup"]
-    },
+    }
   ]
 
   const toggleSkillExpansion = (skillName: string) => {
@@ -290,12 +282,12 @@ export  function SkillSection() {
                       }}
                     >
                       <motion.div
-                        className="flex items-center justify-center mb-4"
+                        className="flex items-center justify-center"
                         initial={{ opacity: 0, rotate: -180 }}
                         animate={{ opacity: 1, rotate: 0 }}
                         transition={{ delay: 0.5, duration: 0.5 }}
                       >
-                        <img src={`/placeholder.svg?height=48&width=48`} alt={skill.name} className="w-12 h-12" />
+                        <SimpleIcon icon={skill.icon} className="w-12 h-12" />
                       </motion.div>
                       <motion.h3
                         className="text-2xl font-semibold text-white mb-2"
