@@ -35,7 +35,7 @@ const SimpleIcon = ({ icon, className = '' }: { icon: any; className?: string })
     role="img"
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
-    className={`w-5 h-5 fill-current ${className}`}
+    className={`w-8 h-8 fill-current ${className}`}
   >
     <title>{icon.title}</title>
     <path d={icon.path} />
@@ -153,10 +153,10 @@ export function SkillSection() {
                     }}
                   >
                     <div className="flex items-center justify-center mb-4">
-                      <SimpleIcon icon={skill.icon} className="w-12 h-12" />
+                      <SimpleIcon icon={skill.icon}/>
                     </div>
-                    <h3 className="text-2xl font-semibold text-white mb-2">{skill.name}</h3>
-                    <p className={`text-white ${!showLevel ? '' : 'mb-4'}`}>{skill.description}</p> 
+                    <h3 className="text-center text-2xl font-semibold text-white mb-2">{skill.name}</h3>
+                    <p className={`text-center text-white ${!showLevel ? '' : 'mb-4'}`}>{skill.description}</p> 
                     {showLevel && (
                       <div className="w-full bg-white/30 rounded-full h-2.5 overflow-hidden">
                         <motion.div

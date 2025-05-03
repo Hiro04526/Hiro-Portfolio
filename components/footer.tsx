@@ -1,7 +1,7 @@
 'use client'
 
-import { Linkedin, Mail, Users } from 'lucide-react'
-import { siGithub, siInstagram } from "simple-icons/icons";
+import { Linkedin } from 'lucide-react'
+import { siGithub, siInstagram, siGmail } from "simple-icons/icons";
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 import Image from 'next/image'
@@ -111,7 +111,7 @@ export function Footer() {
                 { icon: siGithub, href: "https://github.com/Hiro04526", color: "text-purple-500" },
                 { icon: Linkedin, href: "https://linkedin.com/in/hiro-ishikawa", color: "text-blue-500" },
                 { icon: siInstagram, href: "https://www.instagram.com/hir0__0/", color: "text-pink-500" },
-                { icon: Mail, href: "mailto:21hiro44@gmail.com", color: "text-red-500" }
+                { icon: siGmail, href: "https://mail.google.com/mail/?view=cm&fs=1&to=21hiro44@gmail.com", color: "text-red-500" }
               ].map((social, index) => (
                 <Button
                   key={index}
