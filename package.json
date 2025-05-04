@@ -1,12 +1,15 @@
 {
-  "name": "folio-motion",
+  "name": "personal-portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://hiro04526.github.io/Hiro-Portfolio",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -78,5 +81,8 @@
     "typescript": "5.2.2",
     "vaul": "^0.9.9",
     "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }

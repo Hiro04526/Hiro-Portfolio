@@ -95,10 +95,9 @@ export function AboutSection() {
                     transition={{ duration: 0.3 }}
                     className="text-muted-foreground"
                   >
-                    I'm a passionate developer focused on creating beautiful and functional web experiences. 
-                    With expertise in modern web technologies, I bring ideas to life through clean code and 
-                    thoughtful design. My journey in tech started with a fascination for problem-solving and 
-                    has evolved into a career dedicated to crafting intuitive digital solutions.
+                    I’m Hiro, a passionate Computer Science student at De La Salle University Manila. 
+                    I love solving problems—whether it’s through designing intuitive user interfaces, 
+                    coding creative solutions, or bringing technical ideas to life in fun and engaging ways.
                   </motion.p>
                 ) : (
                   <motion.p
@@ -109,7 +108,7 @@ export function AboutSection() {
                     transition={{ duration: 0.3 }}
                     className="text-muted-foreground"
                   >
-                    I'm a passionate developer focused on creating beautiful and functional web experiences...
+                    I’m Hiro, a passionate Computer Science student at De La Salle University Manila...
                   </motion.p>
                 )}
               </AnimatePresence>

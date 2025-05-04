@@ -28,11 +28,29 @@ const SocialIcon = ({ icon, className }: { icon: any; className?: string }) => {
   return <LucideIcon className={`w-5 h-5 ${className}`} />;
 };
 
+interface Contributor {
+  name: string
+  link: string
+  image: string
+}
+
 export function Footer() {
   const [textColors, setTextColors] = useState(['text-blue-500', 'text-green-500', 'text-yellow-500', 'text-purple-500', 'text-pink-500'])
   const [imageRotation, setImageRotation] = useState(0)
   const [profileGlow, setProfileGlow] = useState(0)
   const [contributorScales, setContributorScales] = useState([1, 1, 1])
+  const contributors: Contributor[] = [
+    {
+      name: "Daniella Limbag",
+      link: "https://daniellalimbag.github.io/",
+      image: "/assets/contributor1.png"
+    },
+    {
+      name: "Jan Murillo",
+      link: "https://janfolio.webflow.io/",
+      image: "/assets/contributor2.jpg"
+    }
+  ]
 
   useEffect(() => {
     const colorInterval = setInterval(() => {
@@ -135,21 +153,32 @@ export function Footer() {
             <div id="contributors" className="text-center">
               <h3 className="text-lg font-semibold mb-2 text-primary animate-bounce">Contributors</h3>
               <div className="flex justify-center space-x-4">
-                {[0, 1, 2].map((index) => (
-                  <div key={index} className="relative group">
-                    <Image
-                      src="https://tinyurl.com/25l56ouh"
-                      alt={`Contributor ${index + 1}`}
-                      width={40}
-                      height={40}
-                      className="rounded-full border-2 border-primary transition-all duration-300 hover:border-4"
-                      style={{
-                        transform: `scale(${contributorScales[index]})`,
-                        animation: `float${index + 1} ${3 + index}s ease-in-out infinite`
-                      }}
-                    />
-                    <div className={`absolute -inset-1 rounded-full opacity-0 group-hover:opacity-25 transition-opacity duration-300 bg-primary blur-sm animate-pulse delay-${index * 100}`}></div>
-                  </div>
+                {contributors.map((contributor: Contributor, index: number) => (
+                  <a key={contributor.name} href={contributor.link} target="_blank" rel="noopener noreferrer">
+                    <div className="relative group cursor-pointer">
+                      <Image
+                        src={contributor.image}
+                        alt={contributor.name}
+                        width={80}
+                        height={80}
+                        className="rounded-full border-2 border-primary transition-all duration-300 hover:border-4"
+                        style={{
+                          transform: `scale(${contributorScales[index]})`,
+                          animation: `float${index + 1} ${3 + index}s ease-in-out infinite`
+                        }}
+                      />
+                      {/* Hover tooltip */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 bg-primary text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
+                        {contributor.name}
+                      </div>
+                      <div
+                        className={`absolute -inset-1 rounded-full opacity-0 group-hover:opacity-25 transition-opacity duration-300 bg-primary blur-sm animate-pulse`}
+                        style={{
+                          animationDelay: `${index * 100}ms`
+                        }}
+                      ></div>
+                    </div>
+                  </a>
                 ))}
               </div>
             </div>
