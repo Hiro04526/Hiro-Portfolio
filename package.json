@@ -4,12 +4,10 @@
   "private": true,
   "homepage": "https://hiro04526.github.io/Hiro-Portfolio",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "dev": "next dev",
+  "build": "next build",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
