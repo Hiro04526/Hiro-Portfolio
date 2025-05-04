@@ -2,12 +2,10 @@
   "name": "personal-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://hiro04526.github.io/Hiro-Portfolio",
   "scripts": {
   "dev": "next dev",
   "build": "next build",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d out"
+  "start": "next start"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
