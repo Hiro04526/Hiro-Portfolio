@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  trailingSlash: true,
+  basePath: '/Hiro-Portfolio',     
+  assetPrefix: '/Hiro-Portfolio',
   eslint: {
     ignoreDuringBuilds: true,
   },
