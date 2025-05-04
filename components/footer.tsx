@@ -3,7 +3,7 @@
 import { Linkedin } from 'lucide-react'
 import { siGithub, siInstagram, siGmail } from "simple-icons/icons";
 import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from 'next/image'
 
 const SimpleIcon = ({ icon, className = "" }: { icon: any; className?: string }) => (
@@ -20,10 +20,8 @@ const SimpleIcon = ({ icon, className = "" }: { icon: any; className?: string })
 
 const SocialIcon = ({ icon, className }: { icon: any; className?: string }) => {
   if (icon?.path) {
-    // It's a simple-icons object
     return <SimpleIcon icon={icon} className={className} />;
   }
-  // It's a Lucide icon component
   const LucideIcon = icon;
   return <LucideIcon className={`w-5 h-5 ${className}`} />;
 };
@@ -34,9 +32,47 @@ interface Contributor {
   image: string
 }
 
+function RotatingImage({ glow }: { glow: string }) {
+  const [rotation, setRotation] = useState(0)
+  const requestRef = useRef<number>()
+  const lastTimeRef = useRef<number | null>(null)
+
+  const animate = (time: number) => {
+    if (lastTimeRef.current !== null) {
+      const delta = time - lastTimeRef.current
+      if (delta > 100) {
+        setRotation((prev) => (prev > 1e6 ? 0 : prev + 5))
+        lastTimeRef.current = time
+      }
+    } else {
+      lastTimeRef.current = time
+    }
+    requestRef.current = requestAnimationFrame(animate)
+  }
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(requestRef.current!)
+  }, [])
+
+  return (
+    <div className="mb-4 relative group">
+      <Image
+        src="/assets/myimage.JPG"
+        alt="Hiro Ishikawa"
+        width={100}
+        height={100}
+        className="rounded-full border-4 border-primary shadow-lg transition-all duration-300 hover:scale-110 group-hover:shadow-primary/50"
+        style={{ transform: `rotate(${rotation}deg)` }}
+      />
+      <div className={`absolute -inset-2 rounded-full opacity-25 animate-pulse bg-gradient-to-r ${glow} blur-md transition-all duration-1000`}></div>
+      <div className="absolute -inset-2 rounded-full opacity-25 animate-ping bg-gradient-to-r from-primary via-secondary to-primary"></div>
+    </div>
+  )
+}
+
+
 export function Footer() {
-  const [textColors, setTextColors] = useState(['text-blue-500', 'text-green-500', 'text-yellow-500', 'text-purple-500', 'text-pink-500'])
-  const [imageRotation, setImageRotation] = useState(0)
   const [profileGlow, setProfileGlow] = useState(0)
   const [contributorScales, setContributorScales] = useState([1, 1, 1])
   const contributors: Contributor[] = [
@@ -53,14 +89,6 @@ export function Footer() {
   ]
 
   useEffect(() => {
-    const colorInterval = setInterval(() => {
-      setTextColors(prevColors => [...prevColors.slice(1), prevColors[0]])
-    }, 2000)
-
-    const rotationInterval = setInterval(() => {
-      setImageRotation(prev => (prev + 5) % 360)
-    }, 100)
-
     const glowInterval = setInterval(() => {
       setProfileGlow(prev => (prev + 1) % 6)
     }, 1000)
@@ -74,8 +102,6 @@ export function Footer() {
     }, 50)
 
     return () => {
-      clearInterval(colorInterval)
-      clearInterval(rotationInterval)
       clearInterval(glowInterval)
       clearInterval(scaleInterval)
     }
@@ -95,37 +121,24 @@ export function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center justify-between space-y-8 md:flex-row md:space-y-0">
           <div className="text-center md:text-left flex flex-col items-center md:items-start">
-            <div className="mb-4 relative group">
-              <Image
-                src="/assets/myimage.JPG"
-                alt="Hiro Ishikawa"
-                width={100}
-                height={100}
-                className="rounded-full border-4 border-primary shadow-lg transition-all duration-300 hover:scale-110 group-hover:shadow-primary/50"
-                style={{ transform: `rotate(${imageRotation}deg)` }}
-              />
-              <div className={`absolute -inset-2 rounded-full opacity-50 animate-pulse bg-gradient-to-r ${glowColors[profileGlow]} blur-md transition-all duration-1000`}></div>
-              <div className="absolute -inset-2 rounded-full opacity-25 animate-ping bg-gradient-to-r from-primary via-secondary to-primary"></div>
-            </div>
-            {[
-              "Phone: +639770349859",
-              "Email: 21hiro44@gmail.com"
-            ].map((text, index) => (
+            <RotatingImage glow={glowColors[profileGlow]} />
+            {[ "Phone: +639770349859", "Email: 21hiro44@gmail.com" ].map((text, index) => (
               <p
                 key={index}
-                className={`mt-1 text-sm font-medium ${textColors[index]} transition-colors duration-500 ease-in-out animate-pulse hover:scale-105 transform`}
+                className={`mt-1 text-sm font-medium ${index === 0 ? "text-green-500" : "text-yellow-500"} hover:scale-105 transform transition-colors duration-300`}
               >
                 {text.startsWith('Phone:') ? (
-                  <>Phone: <a href="tel:+639770349859" className="hover:underline hover:text-primary transition-colors duration-300">+639770349859</a></>
+                  <>Phone: <a href="tel:+639770349859" className="hover:underline hover:text-green-500">+639770349859</a></>
                 ) : text.startsWith('Email:') ? (
-                  <>Email: <a href="mailto:21hiro44@gmail.com" className="hover:underline hover:text-primary transition-colors duration-300">21hiro44@gmail.com</a></>
+                  <>Email: <a href="mailto:21hiro44@gmail.com" className="hover:underline hover:text-yellow-500">21hiro44@gmail.com</a></>
                 ) : text}
               </p>
             ))}
           </div>
+
           <div className="flex flex-col items-center space-y-4">
             <div className="flex space-x-4">
-              {[ 
+              {[
                 { icon: siGithub, href: "https://github.com/Hiro04526", color: "text-purple-500" },
                 { icon: Linkedin, href: "https://linkedin.com/in/hiro-ishikawa", color: "text-blue-500" },
                 { icon: siInstagram, href: "https://www.instagram.com/hir0__0/", color: "text-pink-500" },
@@ -135,13 +148,13 @@ export function Footer() {
                   key={index}
                   variant="ghost"
                   size="icon"
-                  className={`group transition-all duration-300 transform hover:scale-110 hover:rotate-6 ${social.color} hover:bg-${social.color}/10`}
+                  className="group transition-all duration-300 transform hover:scale-110 hover:rotate-6"
                 >
                   <a
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative"
+                    className={`relative ${social.color}`}
                   >
                     <SocialIcon icon={social.icon} className={social.color} />
                     <span className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping bg-current"></span>
@@ -167,15 +180,12 @@ export function Footer() {
                           animation: `float${index + 1} ${3 + index}s ease-in-out infinite`
                         }}
                       />
-                      {/* Hover tooltip */}
                       <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 bg-primary text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
                         {contributor.name}
                       </div>
                       <div
-                        className={`absolute -inset-1 rounded-full opacity-0 group-hover:opacity-25 transition-opacity duration-300 bg-primary blur-sm animate-pulse`}
-                        style={{
-                          animationDelay: `${index * 100}ms`
-                        }}
+                        className={`absolute -inset-2 rounded-full opacity-25 animate-pulse bg-gradient-to-r ${glowColors[profileGlow]} blur-md transition-all duration-1000`}
+                        style={{ animationDelay: `${index * 100}ms` }}
                       ></div>
                     </div>
                   </a>
