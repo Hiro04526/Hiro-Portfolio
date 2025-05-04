@@ -17,10 +17,10 @@ const skills = [
 ]
 
 const interests = [
-  { icon: "🚀", label: "Space Exploration" },
+  { icon: "🚀", label: "Startup Culture" },
   { icon: "🎮", label: "Gaming" },
   { icon: "📚", label: "Reading" },
-  { icon: "🎨", label: "Digital Art" },
+  { icon: "💻", label: "Coding" },
 ]
 
 const floatingAnimation = {
@@ -204,29 +204,15 @@ export function AboutSection() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex flex-wrap gap-4"
             >
-              <Button className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 text-primary-foreground">
-                <FaDownload className="mr-2 h-4 w-4" />
-                Download CV
-              </Button>
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                <FaEnvelope className="mr-2 h-4 w-4" />
-                Contact Me
-              </Button>
-              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/20">
-                <FaGithub className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/20">
-                <FaLinkedin className="h-5 w-5" />
-              </Button>
+              <a href="/files/RESUME_ISHIKAWA_ANDREW HIRO.pdf" download>
+                <Button className="hover:from-primary/80 hover:to-secondary/80 text-primary-foreground">
+                  <FaDownload className="mr-2 h-4 w-4" />
+                  Download CV
+                </Button>
+              </a>
             </motion.div>
           </div>
         </motion.div>
-
-        {/* Glowing orbs */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-4xl opacity-30 pointer-events-none">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" />
-          <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" />
-        </div>
       </div>
     </section>
   )
