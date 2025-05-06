@@ -166,7 +166,7 @@ export function ProjectSection() {
             <DialogContent className="sm:max-w-[625px]">
               <DialogHeader>
                 <DialogTitle>{selectedProject.title}</DialogTitle>
-                <DialogDescription>
+                <div className="text-sm text-muted-foreground">
                   <img 
                     src={selectedProject.image} 
                     alt={selectedProject.title} 
@@ -195,7 +195,7 @@ export function ProjectSection() {
                       </Button>
                     </a>
                   </div>
-                </DialogDescription>
+                </div>
               </DialogHeader>
             </DialogContent>
           </Dialog>
