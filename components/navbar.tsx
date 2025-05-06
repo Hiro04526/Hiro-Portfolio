@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Menu, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
+import Image from 'next/image'
 
 const navItems = [
   { name: "Home", path: "/#home" },
@@ -91,12 +92,17 @@ export function Navbar() {
       >
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
-            <Link
-              href="/#home"
-              className="text-2xl font-bold tracking-tighter hover:opacity-80 transition-opacity"
-            >
-              FM
-            </Link>
+          <Link
+            href="/#home"
+            className="w-8 h-8 relative hover:opacity-80 transition-opacity"
+          >
+            <Image
+              src="/assets/favicon.ico"
+              alt="Logo"
+              fill
+              className="object-contain"
+            />
+          </Link>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
