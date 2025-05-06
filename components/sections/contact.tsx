@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 import { FaPaperPlane, FaCheckCircle } from "react-icons/fa";
 
 // Define types for form state and errors
@@ -45,12 +47,35 @@ export function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+  
     if (validateForm()) {
       setIsSubmitting(true);
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API call
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({ name: "", email: "", message: "" }); // Reset form
+  
+      try {
+        await emailjs.send(
+          "service_g1cf6qh",
+          "template_wo6jkij",
+          {
+            name: formState.name,
+            email: formState.email,
+            message: formState.message,
+            time: new Date().toLocaleString()
+          },
+          "8c9fW_NlFQbP3Oz2F"
+        );
+  
+        setIsSubmitted(true);
+        setFormState({ name: "", email: "", message: "" });
+  
+        toast.success("✅ Message sent! Thanks for reaching out.");
+      } catch (error) {
+        console.error("EmailJS Error:", error);
+        toast.error("❌ Something went wrong. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
+    } else {
+      toast.warning("⚠️ Please fill out all required fields correctly.");
     }
   };
 
