@@ -125,12 +125,12 @@ export function Footer() {
             {[ "Phone: +639770349859", "Email: 21hiro44@gmail.com" ].map((text, index) => (
               <p
                 key={index}
-                className={`mt-1 text-sm font-medium ${index === 0 ? "text-green-500" : "text-yellow-500"} hover:scale-105 transform transition-colors duration-300`}
+                className={`mt-1 text-sm font-medium text-purple-500 hover:scale-105 transform transition-colors duration-300`}
               >
                 {text.startsWith('Phone:') ? (
-                  <>Phone: <a href="tel:+639770349859" className="hover:underline hover:text-green-500">+639770349859</a></>
+                  <>Phone: <a href="tel:+639770349859" className="hover:underline hover:text-purple-500">+639770349859</a></>
                 ) : text.startsWith('Email:') ? (
-                  <>Email: <a href="mailto:21hiro44@gmail.com" className="hover:underline hover:text-yellow-500">21hiro44@gmail.com</a></>
+                  <>Email: <a href="mailto:21hiro44@gmail.com" className="hover:underline hover:text-purple-500">21hiro44@gmail.com</a></>
                 ) : text}
               </p>
             ))}
