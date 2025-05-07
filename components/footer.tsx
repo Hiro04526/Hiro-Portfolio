@@ -62,6 +62,8 @@ function RotatingImage({ glow }: { glow: string }) {
         alt="Hiro Ishikawa"
         width={100}
         height={100}
+        loading="lazy"
+        quality={70}
         className="rounded-full border-4 border-primary shadow-lg transition-all duration-300 hover:scale-110 group-hover:shadow-primary/50"
         style={{ transform: `rotate(${rotation}deg)` }}
       />
@@ -174,6 +176,8 @@ export function Footer() {
                         alt={contributor.name}
                         width={80}
                         height={80}
+                        loading="lazy"
+                        quality={70}
                         className="rounded-full border-2 border-primary transition-all duration-300 hover:border-4"
                         style={{
                           transform: `scale(${contributorScales[index]})`,

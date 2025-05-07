@@ -100,6 +100,8 @@ export function Navbar() {
               src="/assets/favicon.ico"
               alt="Logo"
               fill
+              loading="lazy"
+              quality={70}
               className="object-contain"
             />
           </Link>

@@ -62,8 +62,9 @@ export function AboutSection() {
                 src="/assets/myimage2.jpg"
                 alt="Profile"
                 fill
+                loading="lazy"
+                quality={70}
                 className="object-cover"
-                priority
               />
             </motion.div>
             <motion.div
