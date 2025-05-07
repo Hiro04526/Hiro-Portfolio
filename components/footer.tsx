@@ -1,29 +1,30 @@
 'use client'
 
 import { Linkedin } from 'lucide-react'
-import { siGithub, siInstagram, siGmail } from "simple-icons/icons";
+import { siFacebook, siGithub, siInstagram, siGmail } from "simple-icons/icons";
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef, useState } from "react"
 import Image from 'next/image'
 
-const SimpleIcon = ({ icon, className = "" }: { icon: any; className?: string }) => (
+const SimpleIcon = ({ icon, className = "", style }: { icon: any; className?: string; style?: React.CSSProperties }) => (
   <svg
     role="img"
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     className={`w-5 h-5 fill-current ${className}`}
+    style={style}
   >
     <title>{icon.title}</title>
     <path d={icon.path} />
   </svg>
 );
 
-const SocialIcon = ({ icon, className }: { icon: any; className?: string }) => {
+const SocialIcon = ({ icon, className, style }: { icon: any; className?: string; style?: React.CSSProperties }) => {
   if (icon?.path) {
-    return <SimpleIcon icon={icon} className={className} />;
+    return <SimpleIcon icon={icon} className={className} style={style}/>
   }
   const LucideIcon = icon;
-  return <LucideIcon className={`w-5 h-5 ${className}`} />;
+  return <LucideIcon className={`w-5 h-5 ${className}`} style={style}/>;
 };
 
 interface Contributor {
@@ -139,12 +140,13 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col items-center space-y-4">
-            <div className="flex space-x-4">
+          <div className="flex space-x-4">
               {[
-                { icon: siGithub, href: "https://github.com/Hiro04526", color: "text-purple-500" },
-                { icon: Linkedin, href: "https://linkedin.com/in/hiro-ishikawa", color: "text-blue-500" },
-                { icon: siInstagram, href: "https://www.instagram.com/hir0__0/", color: "text-pink-500" },
-                { icon: siGmail, href: "https://mail.google.com/mail/?view=cm&fs=1&to=21hiro44@gmail.com", color: "text-red-500" }
+                { icon: siGithub, href: "https://github.com/Hiro04526", color: "#8250DF" },       // purple-500
+                { icon: siFacebook, href: "https://www.facebook.com/Hiro04526/", color: "#1877F2" }, // Facebook Blue
+                { icon: siInstagram, href: "https://www.instagram.com/hir0__0/", color: "#E1306C" }, // Instagram Pink
+                { icon: Linkedin, href: "https://linkedin.com/in/hiro-ishikawa", color: "#0A66C2" }, // LinkedIn Blue
+                { icon: siGmail, href: "https://mail.google.com/mail/?view=cm&fs=1&to=21hiro44@gmail.com", color: "#EA4335" } // Gmail Red
               ].map((social, index) => (
                 <Button
                   key={index}
@@ -156,11 +158,19 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`relative ${social.color}`}
+                    className="relative"
                   >
-                    <SocialIcon icon={social.icon} className={social.color} />
-                    <span className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping bg-current"></span>
-                    <span className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-25 transition-opacity duration-300 bg-current blur-sm"></span>
+                    <SocialIcon icon={social.icon} className="w-5 h-5" style={{ color: social.color }}/>
+                    <span 
+                      className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping"
+                      style={{ backgroundColor: social.color }}
+                    >
+                    </span>
+                    <span 
+                      className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-25 transition-opacity duration-300 blur-sm" 
+                      style={{ backgroundColor: social.color }}
+                    >
+                    </span>
                   </a>
                 </Button>
               ))}

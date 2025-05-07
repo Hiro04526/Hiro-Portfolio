@@ -82,7 +82,7 @@ export function ProjectSection() {
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-5xl font-bold mt-4 mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
+              className="text-5xl font-bold mt-4 mb-4 pb-2 bg-clip-text text-primary"
             >
               Featured Projects
             </motion.h2>

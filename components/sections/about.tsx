@@ -85,7 +85,7 @@ export function AboutSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">About Me</h2>
+              <h2 className="text-4xl font-bold mb-4 bg-clip-text text-primary">About Me</h2>
               <AnimatePresence mode="wait">
                 {showBio ? (
                   <motion.p
