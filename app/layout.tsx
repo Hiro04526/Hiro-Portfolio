@@ -9,7 +9,7 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Hiro Ishikawa – Portfolio",
+  title: "Hiro Ishikawa's Portfolio",
   description: "Explore Hiro's work, skills, and side projects.",
   metadataBase: new URL('https://hiro-ishikawa-portfolio.vercel.app'),
   icons: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Hiro Ishikawa's Portfolio",
     images: [
       {
-        url: "/assets/og-image.svg", 
+        url: "/assets/og-image.png", 
         width: 1200,
         height: 630,
         alt: "Hiro Ishikawa's Portfolio",
