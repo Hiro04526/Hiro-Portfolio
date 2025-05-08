@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { FaCheckCircle, FaPaperPlane, FaDownload } from "react-icons/fa"
+import { FaCheckCircle, FaPaperPlane, FaDownload, FaEnvelope } from "react-icons/fa"
 import { ChevronDown } from "lucide-react"
 import { TypeAnimation } from "react-type-animation"
 import emailjs from "@emailjs/browser";
@@ -161,6 +161,7 @@ export function HeroSection() {
               </Button>
             </a>
             <Button size="lg" className="group hover:from-primary/80 hover:to-secondary/80 text-primary-foreground" onClick={() => setContactSelected(true)}>
+              <FaEnvelope className="mr-2 h-4 w-4" />
               Contact Me
             </Button>
           </motion.div>
