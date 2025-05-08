@@ -2,20 +2,21 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Button } from '@/components/ui/button'
 import { GlobalStyles } from '@mui/material'
-import { siHtml5, 
-         siReact, 
-         siNextdotjs, 
-         siNodedotjs, 
-         siCss3, 
-         siTailwindcss, 
-         siJavascript, 
-         siTypescript, 
-         siPython,
-         siJupyter,
-         siKotlin,
-         siDart } from 'simple-icons/icons'
+import { 
+  siHtml5, 
+  siReact, 
+  siNextdotjs, 
+  siNodedotjs, 
+  siCss3, 
+  siTailwindcss, 
+  siJavascript, 
+  siTypescript, 
+  siPython,
+  siJupyter,
+  siKotlin,
+  siDart 
+} from 'simple-icons/icons'
 
 import {
   Carousel,
@@ -67,7 +68,6 @@ const JavaIcon = () => (
 
 interface Skill {
   name: string
-  level: number
   icon: any
   description: string
 }
@@ -78,79 +78,66 @@ export function SkillSection() {
   const skills: Skill[] = [
     {
       name: 'ReactJS',
-      level: 70,
       icon: siReact,
       description: 'Building dynamic web pages'
     },
     {
       name: 'Next.JS',
-      level: 70,
       icon: siNextdotjs,
       description: 'Creating fast and SEO-friendly websites'
     },
     {
       name: 'Node.JS',
-      level: 70,
       icon: siNodedotjs,
       description: 'Handling backend logic and APIs'
     },
     {
       name: 'HTML5',
-      level: 70,
       icon: siHtml5,
       description: 'Structuring content for web pages'
     },
     {
       name: 'CSS3',
-      level: 70,
       icon: siCss3,
       description: 'Styling layouts and UI elements'
     },
     {
       name: 'JavaScript',
-      level: 70,
       icon: siJavascript,
       description: 'Adding interactivity to websites'
     },
     {
       name: 'TypeScript',
-      level: 70,
       icon: siTypescript,
       description: 'Writing safer and more organized code'
     },
     {
       name: 'Tailwind CSS',
-      level: 70,
       icon: siTailwindcss,
       description: 'Designing responsive pages quickly'
     },
     {
       name: 'Python',
-      level: 90,
       icon: siPython,
       description: 'Scripting tasks and analyzing data'
     },
     {
       name: 'Jupyter Notebook',
-      level: 70,
       icon: siJupyter,
       description: 'Testing and explaining Python code'
     },
     {
       name: 'Java',
-      level: 70,
       icon: JavaIcon,
       description: 'Building apps and practicing OOP'
     },
     {
       name: 'Kotlin',
-      level: 70,
       icon: siKotlin,
       description: 'Developing Android applications'
     },
     {
       name: 'Dart',
-      level: 70,
       icon: siDart,
       description: 'Creating mobile apps using Flutter'
     }
@@ -175,20 +162,6 @@ export function SkillSection() {
             >
               My Skills
             </motion.h2>
-            <motion.p
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-lg md:text-xl text-muted-foreground mb-8"
-            >
-              Here's a collection of my skills with their proficiency levels.
-            </motion.p>
-            <Button
-              onClick={() => setShowLevel(!showLevel)}
-              className="transition-colors duration-300 hover:bg-purple-600"
-            >
-              {showLevel ? 'Hide Levels' : 'Show Levels'}
-            </Button>
           </div>
 
           <Carousel className="relative" opts={{ loop: true }}>
@@ -232,16 +205,6 @@ export function SkillSection() {
                     </div>
                     <h3 className="text-center text-2xl font-semibold text-white mb-2">{skill.name}</h3>
                     <p className={`text-center text-white ${!showLevel ? '' : 'mb-4'}`}>{skill.description}</p> 
-                    {showLevel && (
-                      <div className="w-full bg-white/30 rounded-full h-2.5 overflow-hidden">
-                        <motion.div
-                          className="bg-primary h-2.5 rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1 }}
-                        />
-                      </div>
-                    )}
                   </motion.div>
                 </CarouselItem>
               ))}

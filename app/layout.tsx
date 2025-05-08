@@ -40,8 +40,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -50,7 +48,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="relative min-h-screen">
-            <Navbar />
             <main>{children}</main>
             <Footer />
           </div>

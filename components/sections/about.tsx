@@ -2,9 +2,6 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { FaDownload, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import Image from "next/image"
 
 const skills = [
@@ -59,7 +56,7 @@ export function AboutSection() {
               className="relative aspect-square rounded-2xl overflow-hidden"
             >
               <Image
-                src="/assets/myimage2.jpg"
+                src="/assets/myimage.JPG"
                 alt="Profile"
                 fill
                 loading="lazy"
@@ -87,39 +84,19 @@ export function AboutSection() {
             >
               <h2 className="text-4xl font-bold mb-4 bg-clip-text text-primary">About Me</h2>
               <AnimatePresence mode="wait">
-                {showBio ? (
-                  <motion.p
-                    key="full-bio"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-muted-foreground"
-                  >
-                    I’m Hiro, a passionate Computer Science student at De La Salle University Manila. 
-                    I love solving problems—whether it’s through designing intuitive user interfaces, 
-                    coding creative solutions, or bringing technical ideas to life in fun and engaging ways.
-                  </motion.p>
-                ) : (
-                  <motion.p
-                    key="short-bio"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-muted-foreground"
-                  >
-                    I’m Hiro, a passionate Computer Science student at De La Salle University Manila...
-                  </motion.p>
-                )}
+                <motion.p
+                  key="full-bio"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-muted-foreground"
+                >
+                  I’m Hiro, a passionate Computer Science student at De La Salle University Manila. 
+                  I love solving problems—whether it’s through designing intuitive user interfaces, 
+                  coding creative solutions, or bringing technical ideas to life in fun and engaging ways.
+                </motion.p>
               </AnimatePresence>
-              <Button 
-                variant="link" 
-                onClick={() => setShowBio(!showBio)}
-                className="mt-2 p-0 h-auto font-semibold text-primary hover:text-primary/80"
-              >
-                {showBio ? "Read Less" : "Read More"}
-              </Button>
             </motion.div>
 
             {/* Skills */}
@@ -133,7 +110,7 @@ export function AboutSection() {
               <h3 className="text-xl font-semibold">Core Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill, index) => (
-                  <motion.button
+                  <motion.div
                     key={skill}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -141,30 +118,12 @@ export function AboutSection() {
                     whileTap={{ scale: 0.95 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className={`px-3 py-1 rounded-full text-sm ${
-                      activeSkill === skill 
-                        ? "bg-primary text-primary-foreground" 
-                        : "bg-secondary text-secondary-foreground"
-                    }`}
-                    onClick={() => setActiveSkill(activeSkill === skill ? null : skill)}
+                    className="px-3 py-1 rounded-full text-sm bg-secondary text-secondary-foreground"
                   >
                     {skill}
-                  </motion.button>
+                  </motion.div>
                 ))}
               </div>
-              <AnimatePresence>
-                {activeSkill && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="mt-2 p-2 bg-secondary/50 rounded-md text-sm"
-                  >
-                    {`${activeSkill}: Click to see projects using this skill!`}
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </motion.div>
 
             {/* Interests */}
@@ -194,22 +153,6 @@ export function AboutSection() {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
-
-            {/* Actions */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex flex-wrap gap-4"
-            >
-              <a href="/files/RESUME_ISHIKAWA_ANDREW HIRO.pdf" download>
-                <Button className="hover:from-primary/80 hover:to-secondary/80 text-primary-foreground">
-                  <FaDownload className="mr-2 h-4 w-4" />
-                  Download CV
-                </Button>
-              </a>
             </motion.div>
           </div>
         </motion.div>
