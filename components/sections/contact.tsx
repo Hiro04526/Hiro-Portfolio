@@ -10,7 +10,6 @@ import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 import { FaPaperPlane, FaCheckCircle } from "react-icons/fa";
 
-// Define types for form state and errors
 type FormState = {
   name: string;
   email: string;
