@@ -3,13 +3,14 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
+import { SkillsChips } from "@/components/SkillsChips"
 
 const skills = [
   "React/Next.js",
   "TypeScript",
   "Node.js",
   "Tailwind CSS",
-  "Framer Motion",
+  "Supabase",
   "UI/UX Design",
 ]
 
@@ -108,22 +109,7 @@ export function AboutSection() {
               className="space-y-4"
             >
               <h3 className="text-xl font-semibold">Core Skills</h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill, index) => (
-                  <motion.div
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="px-3 py-1 rounded-full text-sm bg-secondary text-secondary-foreground"
-                  >
-                    {skill}
-                  </motion.div>
-                ))}
-              </div>
+              <SkillsChips skills={skills} />
             </motion.div>
 
             {/* Interests */}
