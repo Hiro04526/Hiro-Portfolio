@@ -24,6 +24,19 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
+    title: "Dot Zero Hair Studio Website - UI/UX Prototype for a Salon's Website Revamp",
+    description: "A Figma-based UI/UX prototype created to modernize Dot Zero Hair Studio’s online presence with a clean and stylish website design.",
+    image: "/assets/project-1.png",
+    color: "from-red-500 to-pink-600",
+    textColor: "text-red-100",
+    details: "This project focuses on redesigning the website for Dot Zero Hair Studio, a salon aiming to enhance its digital brand identity. The prototype emphasizes a sleek and user-friendly layout, intuitive navigation, and mobile responsiveness. Key features include service showcases, stylist profiles, online booking integration, and a gallery section — all designed to create an engaging and trustworthy experience for potential clients.",
+    technologies: ["Figma"],
+    github: "",
+    figma: "https://www.figma.com/proto/BToCrKTfoV9kiFW4n97UUh/CSSWENG?node-id=1-2&p=f&t=bVPvQsPmJuzGMmPc-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1",
+    live: ""
+  },
+  {
+    id: 2,
     title: "MediSync - UI/UX Prototype for a Mobile Telemedicine Application",
     description: "A Figma-based design project exploring intuitive UI/UX solutions for telemedicine platforms.",
     image: "/assets/project-2.png",
@@ -36,44 +49,18 @@ const projects: Project[] = [
     live: "",
   },
   {
-  "id": 2,
-  "title": "PokéSoul",
-  "description": "A companion app designed to help players track their progress during Pokémon Soullocke runs.",
-  "image": "/assets/project-3.png",
-  "color": "from-green-500 to-yellow-500",
-  "textColor": "text-green-100",
-  "details": "PokéSoul streamlines the experience of playing Pokémon Soullocke challenges by providing an easy way to log caught Pokémon, manage party status, and follow special challenge rules. The app allows players to record encounters, track fainted Pokémon, and monitor overall run progress. Built with a focus on simplicity and accessibility, it helps players stay organized while making their Soullocke journey more engaging and structured.",
-  "technologies": ["Figma", "Kotlin", "SQLite", "Android Studio"],
-  "github": "https://github.com/daniellalimbag/Pokesoul",
-  "figma": "https://www.figma.com/proto/M7CWBUegxBsDzIaX9c7EVQ/PokeSoul?node-id=1-3&p=f&t=DwXhVU4fsbcZeO32-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A3&show-proto-sidebar=1",
-  "live": ""
-  },
-  {
     id: 3,
-    title: "Blockchain-based Supply Chain",
-    description: "A decentralized application for tracking products from manufacture to delivery, ensuring transparency and authenticity.",
-    image: "https://tinyurl.com/258xcbsc",
-    color: "from-red-500 to-pink-600",
-    textColor: "text-red-100",
-    details: "This dApp uses smart contracts to record each step of the supply chain process. It includes features like QR code scanning for instant product verification and a consumer-facing mobile app.",
-    technologies: ["Solidity", "React Native", "Web3.js", "IPFS"],
-    github: "https://github.com/yourusername/blockchain-supply-chain",
-    figma: "",
-    live: "https://blockchain-supply.example.com"
+    title: "PokéSoul",
+    description: "A companion app designed to help players track their progress during Pokémon Soullocke runs.",
+    image: "/assets/project-3.png",
+    color: "from-green-500 to-yellow-500",
+    textColor: "text-green-100",
+    details: "PokéSoul streamlines the experience of playing Pokémon Soullocke challenges by providing an easy way to log caught Pokémon, manage party status, and follow special challenge rules. The app allows players to record encounters, track fainted Pokémon, and monitor overall run progress. Built with a focus on simplicity and accessibility, it helps players stay organized while making their Soullocke journey more engaging and structured.",
+    technologies: ["Figma", "Kotlin", "SQLite", "Android Studio"],
+    github: "https://github.com/daniellalimbag/Pokesoul",
+    figma: "https://www.figma.com/proto/M7CWBUegxBsDzIaX9c7EVQ/PokeSoul?node-id=1-3&p=f&t=DwXhVU4fsbcZeO32-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A3&show-proto-sidebar=1",
+    live: ""
   },
-  {
-    id: 4,
-    title: "Blockchain-based Supply Chain",
-    description: "A decentralized application for tracking products from manufacture to delivery, ensuring transparency and authenticity.",
-    image: "https://tinyurl.com/258xcbsc",
-    color: "from-red-500 to-pink-600",
-    textColor: "text-red-100",
-    details: "This dApp uses smart contracts to record each step of the supply chain process. It includes features like QR code scanning for instant product verification and a consumer-facing mobile app.",
-    technologies: ["Solidity", "React Native", "Web3.js", "IPFS"],
-    github: "https://github.com/yourusername/blockchain-supply-chain",
-    figma: "",
-    live: "https://blockchain-supply.example.com"
-  }
 ];
 
 export function ProjectSection() {
