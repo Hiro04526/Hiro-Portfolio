@@ -124,7 +124,7 @@ export function HeroSection() {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-6xl font-bold mb-6"
           >
-            Creative Developer
+            Andrew Hiro C. Ishikawa
           </motion.h1>
 
           <motion.div
