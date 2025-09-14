@@ -146,10 +146,26 @@ export function AboutSection() {
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     className="flex items-center space-x-2 p-2 bg-secondary/30 rounded-md"
                   >
-                    <span className="text-2xl">{interest.icon}</span>
-                    <span className="text-sm text-secondary-foreground">
-                      {interest.label}
-                    </span>
+                    {interest.label === "Gaming" ? (
+                      <a
+                        href="https://www.leagueoflegends.com/en-sg/download/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 w-full"
+                      >
+                        <span className="text-2xl">{interest.icon}</span>
+                        <span className="text-sm text-secondary-foreground">
+                          {interest.label}
+                        </span>
+                      </a>
+                    ) : (
+                      <>
+                        <span className="text-2xl">{interest.icon}</span>
+                        <span className="text-sm text-secondary-foreground">
+                          {interest.label}
+                        </span>
+                      </>
+                    )}
                   </motion.div>
                 ))}
               </div>
