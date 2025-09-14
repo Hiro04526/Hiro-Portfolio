@@ -29,7 +29,7 @@ const projects: Project[] = [
     image: "/assets/project-1.png",
     color: "from-red-500 to-pink-600",
     textColor: "text-red-100",
-    details: "This project focuses on redesigning the website for Dot Zero Hair Studio, a salon aiming to enhance its digital brand identity. The prototype emphasizes a sleek and user-friendly layout, intuitive navigation, and mobile responsiveness. Key features include service showcases, stylist profiles, online booking integration, and a gallery section — all designed to create an engaging and trustworthy experience for potential clients.",
+    details: "This project presents a redesign of the website of Dot Zero Hair Studio, a salon aiming to enhance its digital brand identity.",
     technologies: ["Figma"],
     github: "",
     figma: "https://www.figma.com/proto/BToCrKTfoV9kiFW4n97UUh/CSSWENG?node-id=1-2&p=f&t=bVPvQsPmJuzGMmPc-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1",
