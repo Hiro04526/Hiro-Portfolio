@@ -16,21 +16,23 @@ type Project = {
   details: string;
   technologies: string[];
   github: string;
+  figma: string;
   live: string;
 };
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "AI-Powered Task Manager",
-    description: "An intelligent task management system that uses machine learning to prioritize and categorize tasks.",
-    image: "https://tinyurl.com/226ofh39",
+    title: "UI/UX Design for Telemedicine Mobile Application",
+    description: "A Figma-based design project exploring intuitive UI/UX solutions for telemedicine platforms.",
+    image: "/assets/project-2.png",
     color: "from-blue-500 to-purple-600",
     textColor: "text-blue-100",
-    details: "This project leverages natural language processing to understand task descriptions and automatically assign priorities. It also includes a smart scheduling feature that optimizes your daily workflow.",
-    technologies: ["React", "Node.js", "TensorFlow.js", "MongoDB"],
-    github: "https://github.com/yourusername/ai-task-manager",
-    live: "https://ai-task-manager.example.com"
+    details: "This project focuses on creating wireframes and interactive prototypes in Figma for a telemedicine mobile app. The design process emphasizes clean navigation, accessibility, and user trust. Key elements include patient onboarding flows, doctor selection interfaces, video consultation screens, and appointment scheduling layouts — all carefully designed to showcase how UI/UX principles can improve remote healthcare experiences.",
+    technologies: ["Figma"],
+    github: "",
+    figma: "https://www.figma.com/proto/0T30L4BeEGE4ApOKCtzYIx/%5BSTHCIUX%5D-High-Fidelity?node-id=1-7413&node-type=frame&t=Dc5QU1VudoP3jU6c-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A7399&show-proto-sidebar=1",
+    live: "",
   },
   {
     id: 2,
@@ -42,6 +44,7 @@ const projects: Project[] = [
     details: "Users can choose from various virtual environments and workout types. The app tracks body movements using VR controllers and provides real-time feedback on form and performance.",
     technologies: ["Unity", "C#", "Oculus SDK", "Firebase"],
     github: "https://github.com/yourusername/vr-fitness",
+    figma: "",
     live: "https://vr-fitness.example.com"
   },
   {
@@ -54,6 +57,7 @@ const projects: Project[] = [
     details: "This dApp uses smart contracts to record each step of the supply chain process. It includes features like QR code scanning for instant product verification and a consumer-facing mobile app.",
     technologies: ["Solidity", "React Native", "Web3.js", "IPFS"],
     github: "https://github.com/yourusername/blockchain-supply-chain",
+    figma: "",
     live: "https://blockchain-supply.example.com"
   }
 ];
@@ -176,24 +180,39 @@ export function ProjectSection() {
                   <h4 className="font-semibold mb-2">Technologies Used:</h4>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {selectedProject.technologies.map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
+                      <span 
+                        key={tech} 
+                        className="px-2 py-1 bg-secondary text-secondary-foreground rounded-full text-sm"
+                      >
                         {tech}
                       </span>
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
-                      <Button className="group bg-gray-800 text-white hover:bg-gray-700">
-                        <FaGithub className="mr-2" />
-                        GitHub
-                      </Button>
-                    </a>
-                    <a href={selectedProject.live} target="_blank" rel="noopener noreferrer">
-                      <Button className="group bg-blue-600 text-white hover:bg-blue-500">
-                        <FaExternalLinkAlt className="mr-2" />
-                        Live Demo
-                      </Button>
-                    </a>
+                    {selectedProject.github && (
+                      <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
+                        <Button className="group bg-gray-800 text-white hover:bg-gray-700">
+                          <FaGithub className="mr-2" />
+                          GitHub
+                        </Button>
+                      </a>
+                    )}
+                    {selectedProject.figma && (
+                      <a href={selectedProject.figma} target="_blank" rel="noopener noreferrer">
+                        <Button className="group bg-pink-600 text-white hover:bg-pink-500">
+                          <FaExternalLinkAlt className="mr-2" />
+                          Figma
+                        </Button>
+                      </a>
+                    )}
+                    {selectedProject.live && (
+                      <a href={selectedProject.live} target="_blank" rel="noopener noreferrer">
+                        <Button className="group bg-blue-600 text-white hover:bg-blue-500">
+                          <FaExternalLinkAlt className="mr-2" />
+                          Live Demo
+                        </Button>
+                      </a>
+                    )}
                   </div>
                 </div>
               </DialogHeader>
