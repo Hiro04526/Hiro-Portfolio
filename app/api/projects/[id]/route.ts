@@ -1,9 +1,13 @@
-import { NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/server/supabaseAdmin";
+// app/api/projects/[id]/route.ts
+import { NextRequest, NextResponse } from "next/server"
+import { supabaseAdmin } from "@/lib/server/supabaseAdmin"
 
-// No need for custom typing for params, use destructuring
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
-  if (!isAdminCookie(req)) {
+// Fix: Access dynamic param `id` from pathname
+export async function PATCH(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+  const id = pathname.split("/").pop();  // Extracts the last part (id)
+
+  if (!id || !isAdminCookie(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -11,15 +15,19 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   const { data, error } = await supabaseAdmin
     .from("projects")
     .update(body)
-    .eq("id", Number(params.id))  // Ensure `params.id` is correctly parsed
+    .eq("id", Number(id))  // Convert id to number for querying
     .select()
     .single();
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
   return NextResponse.json({ data });
 }
 
-function isAdminCookie(req: Request) {
-  const cookie = req.headers.get("cookie") || "";
-  return cookie.includes("admin=1");
+// Admin authentication check
+function isAdminCookie(req: NextRequest) {
+  const cookie = req.cookies.get("admin")?.value || "";
+  return cookie === "1";  // Compare correctly with the string '1'
 }
