@@ -49,7 +49,7 @@ export function SkillsChips({ skills }: Props) {
       setIsAdmin(false);
     }
   };
-  
+
   return (
     <>
       <div className="flex flex-wrap gap-2">
@@ -76,17 +76,25 @@ export function SkillsChips({ skills }: Props) {
             <motion.button
               key={skill}
               type="button"
-              onClick={() => setShowPwd(true)}
+              onClick={handleToggle}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="px-3 py-1 rounded-full text-sm bg-secondary text-secondary-foreground cursor-default"
-              title={isAdmin ? "Admin mode enabled" : "Enter admin password"}
+              className={`px-3 py-1 rounded-full text-sm ${
+                isAdmin
+                  ? "bg-emerald-600 text-white"
+                  : "bg-secondary text-secondary-foreground"
+              } cursor-default`}
+              title={
+                isAdmin
+                  ? "Admin mode enabled — click to exit"
+                  : "Enter admin password"
+              }
             >
-              {isAdmin ? "Supabase (Admin)" : "Supabase"}
+              {isAdmin ? "Supabase (Admin) — Exit" : "Supabase"}
             </motion.button>
           );
         })}
