@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { FaChevronRight, FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import { FaFigma } from "react-icons/fa6"
 
@@ -21,51 +21,31 @@ type Project = {
   live: string;
 };
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "Dot Zero Hair Studio Website - UI/UX Prototype for a Salon's Website Revamp",
-    description: "A Figma-based UI/UX prototype created to modernize Dot Zero Hair Studio’s online presence with a clean and stylish website design.",
-    image: "/assets/project-1.png",
-    color: "from-red-500 to-pink-600",
-    textColor: "text-red-100",
-    details: "This project presents a redesign of the website of Dot Zero Hair Studio, a salon aiming to enhance its digital brand identity.",
-    technologies: ["Figma"],
-    github: "",
-    figma: "https://www.figma.com/proto/BToCrKTfoV9kiFW4n97UUh/CSSWENG?node-id=1-2&p=f&t=bVPvQsPmJuzGMmPc-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1",
-    live: ""
-  },
-  {
-    id: 2,
-    title: "MediSync - UI/UX Prototype for a Mobile Telemedicine Application",
-    description: "A Figma-based design project exploring intuitive UI/UX solutions for telemedicine platforms.",
-    image: "/assets/project-2.png",
-    color: "from-blue-500 to-purple-600",
-    textColor: "text-blue-100",
-    details: "This project presents wireframes and interactive prototypes in Figma for a telemedicine mobile app.",
-    technologies: ["Figma"],
-    github: "",
-    figma: "https://www.figma.com/proto/0T30L4BeEGE4ApOKCtzYIx/%5BSTHCIUX%5D-High-Fidelity?node-id=1-7413&node-type=frame&t=Dc5QU1VudoP3jU6c-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A7399&show-proto-sidebar=1",
-    live: "",
-  },
-  {
-    id: 3,
-    title: "PokéSoul",
-    description: "A companion app designed to help players track their progress during Pokémon Soullocke runs.",
-    image: "/assets/project-3.png",
-    color: "from-green-500 to-yellow-500",
-    textColor: "text-green-100",
-    details: "PokéSoul streamlines the experience of playing Pokémon Soullocke challenges by providing an easy way to log caught Pokémon, manage party status, and follow special challenge rules. The app allows players to record encounters, track fainted Pokémon, and monitor overall run progress. Built with a focus on simplicity and accessibility, it helps players stay organized while making their Soullocke journey more engaging and structured.",
-    technologies: ["Figma", "Kotlin", "SQLite", "Android Studio"],
-    github: "https://github.com/daniellalimbag/Pokesoul",
-    figma: "https://www.figma.com/proto/M7CWBUegxBsDzIaX9c7EVQ/PokeSoul?node-id=1-3&p=f&t=DwXhVU4fsbcZeO32-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A3&show-proto-sidebar=1",
-    live: ""
-  },
-];
-
 export function ProjectSection() {
   // Define selectedProject state to accept Project type or null
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const res = await fetch("/api/projects");
+        const result = await res.json();
+        if (res.ok) {
+          setProjects(result.data);
+        } else {
+          setError(result.error || "Failed to fetch projects");
+        }
+      } catch (err) {
+        setError("Something went wrong while fetching projects");
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProjects();
+  }, []);
 
   return (
     <section id="projects" className="bg-gradient-to-br from-background to-secondary/30 transition-colors duration-300 overflow-hidden">
@@ -101,6 +81,10 @@ export function ProjectSection() {
               Explore a collection of innovative projects that showcase my expertise in cutting-edge web technologies and creative problem-solving.
             </motion.p>
           </div>
+
+          {/* Display Loading/Error */}
+          {loading && <p>Loading projects...</p>}
+          {error && <p className="text-red-500">{error}</p>}
 
           {/* Project Cards */}
           <motion.div
@@ -152,7 +136,7 @@ export function ProjectSection() {
                   <Button 
                     size="lg" 
                     className={`group bg-white/20 hover:bg-white/30 ${project.textColor}`}
-                    onClick={() => setSelectedProject(project)} // now works fine
+                    onClick={() => setSelectedProject(project)}
                   >
                     View Details
                     <FaChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
