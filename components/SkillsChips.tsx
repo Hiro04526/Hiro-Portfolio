@@ -68,7 +68,7 @@ export function SkillsChips({ skills }: Props) {
               whileTap={{ scale: 0.95 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="px-3 py-1 rounded-full text-sm bg-emerald-600 text-white cursor-pointer"
+              className="px-3 py-1 rounded-full text-sm bg-secondary text-secondary-foreground cursor-default"
               title={isAdmin ? "Admin mode enabled" : "Enter admin password"}
             >
               {isAdmin ? "Supabase (Admin)" : "Supabase"}
@@ -76,11 +76,11 @@ export function SkillsChips({ skills }: Props) {
           );
         })}
       </div>
-
+      
       {/* Simple modal */}
       {showPwd && (
         <div className="fixed inset-0 z-50 grid place-items-center bg-black/50 p-4">
-          <div className="w-full max-w-sm rounded-lg bg-white p-4 shadow-xl">
+          <div className="w-full max-w-sm rounded-lg bg-secondary text-secondary-foreground p-4 shadow-xl">
             <h4 className="mb-2 text-lg font-semibold">Enter Admin Password</h4>
             <input
               type="password"
