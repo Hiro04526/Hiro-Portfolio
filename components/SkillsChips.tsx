@@ -35,6 +35,21 @@ export function SkillsChips({ skills }: Props) {
     }
   };
 
+  const handleToggle = async () => {
+    if (!isAdmin) {
+      setShowPwd(true);
+      return;
+    }
+    // if already admin, log out (clear cookie) and flip context
+    try {
+      await fetch("/api/admin/logout", { method: "POST" });
+    } catch {
+      // ignore; still flip local state so UI reflects intent
+    } finally {
+      setIsAdmin(false);
+    }
+  };
+  
   return (
     <>
       <div className="flex flex-wrap gap-2">
