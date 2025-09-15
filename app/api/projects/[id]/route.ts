@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { supabaseAdmin } from "@/lib/server/supabaseAdmin";
 
 // No need for custom typing for params, use destructuring
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
