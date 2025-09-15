@@ -82,10 +82,6 @@ export function ProjectSection() {
             </motion.p>
           </div>
 
-          {/* Display Loading/Error */}
-          {loading && <p>Loading projects...</p>}
-          {error && <p className="text-red-500">{error}</p>}
-
           {/* Project Cards */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -194,7 +190,7 @@ export function ProjectSection() {
                       <a href={selectedProject.live} target="_blank" rel="noopener noreferrer">
                         <Button className="group bg-blue-600 text-white hover:bg-blue-500">
                           <FaExternalLinkAlt className="mr-2" />
-                          Live Demo
+                          Live
                         </Button>
                       </a>
                     )}
