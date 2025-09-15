@@ -85,7 +85,7 @@ export function SkillsChips({ skills }: Props) {
               transition={{ duration: 0.3, delay: index * 0.1 }}
               className={`px-3 py-1 rounded-full text-sm ${
                 isAdmin
-                  ? "bg-emerald-600 text-white"
+                  ? "bg-red-600 text-white"
                   : "bg-secondary text-secondary-foreground"
               } cursor-default`}
               title={
@@ -94,7 +94,7 @@ export function SkillsChips({ skills }: Props) {
                   : "Enter admin password"
               }
             >
-              {isAdmin ? "Supabase (Admin) — Exit" : "Supabase"}
+              {isAdmin ? "Exit Admin" : "Supabase"}
             </motion.button>
           );
         })}
