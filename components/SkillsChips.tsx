@@ -76,7 +76,7 @@ export function SkillsChips({ skills }: Props) {
           );
         })}
       </div>
-      
+
       {/* Simple modal */}
       {showPwd && (
         <div className="fixed inset-0 z-50 grid place-items-center bg-black/50 p-4">
@@ -93,7 +93,7 @@ export function SkillsChips({ skills }: Props) {
             <div className="mt-4 flex justify-end gap-2">
               <button
                 onClick={() => setShowPwd(false)}
-                className="rounded bg-gray-200 px-3 py-1 text-sm"
+                className="rounded bg-secondary px-3 py-1 text-sm"
               >
                 Cancel
               </button>
