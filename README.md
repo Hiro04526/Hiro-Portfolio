@@ -51,47 +51,5 @@ npm run dev
 
 Your portfolio will be available at [http://localhost:3000](http://localhost:3000) 🚀
 
----
-
-## ✨ **Features in Development**
-
-- More **interactive animations** on various sections.
-- Enhanced **performance optimizations** for faster load times.
-- Additional **project categories** and filtering options.
-- **Multi-language support**.
-
----
-
-## 👥 **Contributing**
-
-We welcome contributions! Please follow the steps below to contribute to this project:
-
-1. **Fork the repository** and clone it to your local machine.
-2. **Create a new branch** for your feature or bug fix.
-3. **Make your changes** and test them locally.
-4. **Commit your changes** with a descriptive message.
-5. **Push to your fork** and open a **pull request** to the main repository.
-
-For more detailed instructions, check out the [CONTRIBUTING.md](CONTRIBUTING.md) guide. 📑
-
----
-
-## 📜 **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 📧 **Contact**
-
-If you have any questions or suggestions, feel free to reach out to me:
-
-- Email: [aniruddhaadak80@gmail.com](mailto:aniruddhaadak80@gmail.com)
-- GitHub: [Profile](https://github.com/aniruddhaadak80)
-
----
-
-### ⭐ **Thank you for checking out my portfolio! Feel free to fork, clone, and customize!** 🌟
-
 
 
