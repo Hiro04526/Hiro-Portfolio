@@ -21,6 +21,22 @@ type Project = {
   live: string;
 };
 
+const projectss: Project[] = [
+  {
+    id: 1,
+    title: 'Green Giant FM Website',
+    description: 'Building dynamic web pages',
+    image: '',
+    color: 'green',
+    textColor: 'black',
+    details: 'Redesigned and modernized the organization`s website to improve mobile responsiveness, implement new features and pages, and elevate overall brand presentation.',
+    technologies: ['NextJS', 'Typescript', 'Supabase', 'Google OAuth', 'Spotify API'],
+    github: '',
+    figma: '',
+    live: 'greengiantfm.netlify.app',
+  }
+]  
+
 export function ProjectSection() {
   // Define selectedProject state to accept Project type or null
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
