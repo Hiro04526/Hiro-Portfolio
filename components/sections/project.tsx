@@ -28,25 +28,6 @@ export function ProjectSection() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function fetchProjects() {
-      try {
-        const res = await fetch("/api/projects");
-        const result = await res.json();
-        if (res.ok) {
-          setProjects(result.data);
-        } else {
-          setError(result.error || "Failed to fetch projects");
-        }
-      } catch (err) {
-        setError("Something went wrong while fetching projects");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchProjects();
-  }, []);
-
   return (
     <section id="projects" className="bg-gradient-to-br from-background to-secondary/30 transition-colors duration-300 overflow-hidden">
       <motion.div

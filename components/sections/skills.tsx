@@ -84,7 +84,7 @@ export function SkillSection() {
     {
       name: 'Next.JS',
       icon: siNextdotjs,
-      description: 'Creating fast and SEO-friendly websites'
+      description: 'Creating fast & SEO-friendly websites'
     },
     {
       name: 'Node.JS',
@@ -109,12 +109,12 @@ export function SkillSection() {
     {
       name: 'TypeScript',
       icon: siTypescript,
-      description: 'Writing safer and more organized code'
+      description: 'Writing safer & more organized code'
     },
     {
       name: 'Tailwind CSS',
       icon: siTailwindcss,
-      description: 'Designing responsive pages quickly'
+      description: 'Designing responsive pages'
     },
     {
       name: 'Python',
@@ -124,7 +124,7 @@ export function SkillSection() {
     {
       name: 'Jupyter Notebook',
       icon: siJupyter,
-      description: 'Testing and explaining Python code'
+      description: 'Testing & explaining Python code'
     },
     {
       name: 'Java',
