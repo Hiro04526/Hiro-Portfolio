@@ -21,39 +21,39 @@ type Project = {
   live: string;
 };
 
-const projectss: Project[] = [
+const projectData: Project[] = [
   {
     id: 1,
     title: 'Green Giant FM Website',
-    description: '',
-    image: '/assets/Raffy.png',
-    color: 'green',
-    textColor: 'black',
+    description: 'Modernized web presence for Green Giant FM.',
+    image: '/assets/green-giant.png',
+    color: 'from-emerald-500 to-emerald-700',
+    textColor: 'text-white', 
     details: 'Redesigned and modernized the organization`s website to improve mobile responsiveness, implement new features and pages, and elevate overall brand presentation. Note: Work In Progress',
     technologies: ['Next.js', 'Typescript', 'Supabase', 'Google OAuth', 'Spotify API'],
     github: '',
     figma: '',
-    live: 'greengiantfm.netlify.app',
+    live: 'https://greengiantfm.netlify.app',
   },
   {
     id: 2,
     title: 'Ultimate Minecraft Forum',
-    description: '',
-    image: '/assets/grass_block.png',
-    color: 'gray',
-    textColor: 'black',
-    details: 'Originally a project for a major subject, I migrated the website from HTML, JS, CSS, and MongoDB to a Next.js framework with Supabase.',
-    technologies: ['Next.js', 'Typescript', 'Supabase'],
+    description: 'A modernized community platform for Minecraft enthusiasts.',
+    image: '/assets/minecraft.png',
+    color: 'from-zinc-500 to-zinc-700',
+    textColor: 'text-white',
+    details: 'Originally developed as a major academic project, I migrated and re-engineered the platform from a legacy HTML/JS/MongoDB stack to a high-performance Next.js framework. This overhaul integrated Supabase for streamlined data management and focused on optimizing user interaction and overall site scalability.',
+    technologies: ['Next.js', 'Typescript', 'Supabase', 'Tailwind CSS'],
     github: '',
     figma: '',
-    live: '',
+    live: 'https://mc-forum.vercel.app/',
   }
-]  
+];
 
 export function ProjectSection() {
   // Define selectedProject state to accept Project type or null
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<Project[]>(projectData);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -112,7 +112,7 @@ export function ProjectSection() {
                 <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover rounded-t-lg mb-4"
+                  className="w-full h-48 object-fit rounded-t-lg mb-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
@@ -165,7 +165,7 @@ export function ProjectSection() {
                   <img 
                     src={selectedProject.image} 
                     alt={selectedProject.title} 
-                    className="w-full h-48 object-cover rounded-lg mb-4"
+                    className="w-full h-fit object-cover rounded-lg mb-4"
                   />
                   <p className="mb-4">{selectedProject.details}</p>
                   <h4 className="font-semibold mb-2">Technologies Used:</h4>
