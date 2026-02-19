@@ -25,15 +25,28 @@ const projectss: Project[] = [
   {
     id: 1,
     title: 'Green Giant FM Website',
-    description: 'Building dynamic web pages',
-    image: '',
+    description: '',
+    image: '/assets/Raffy.png',
     color: 'green',
     textColor: 'black',
-    details: 'Redesigned and modernized the organization`s website to improve mobile responsiveness, implement new features and pages, and elevate overall brand presentation.',
-    technologies: ['NextJS', 'Typescript', 'Supabase', 'Google OAuth', 'Spotify API'],
+    details: 'Redesigned and modernized the organization`s website to improve mobile responsiveness, implement new features and pages, and elevate overall brand presentation. Note: Work In Progress',
+    technologies: ['Next.js', 'Typescript', 'Supabase', 'Google OAuth', 'Spotify API'],
     github: '',
     figma: '',
     live: 'greengiantfm.netlify.app',
+  },
+  {
+    id: 2,
+    title: 'Ultimate Minecraft Forum',
+    description: '',
+    image: '/assets/grass_block.png',
+    color: 'gray',
+    textColor: 'black',
+    details: 'Originally a project for a major subject, I migrated the website from HTML, JS, CSS, and MongoDB to a Next.js framework with Supabase.',
+    technologies: ['Next.js', 'Typescript', 'Supabase'],
+    github: '',
+    figma: '',
+    live: '',
   }
 ]  
 
