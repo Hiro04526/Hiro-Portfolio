@@ -29,7 +29,7 @@ const projectData: Project[] = [
     image: '/assets/green-giant.png',
     color: 'from-emerald-500 to-emerald-700',
     textColor: 'text-white', 
-    details: 'Redesigned and modernized the organization`s website to improve mobile responsiveness, implement new features and pages, and elevate overall brand presentation. Note: Work In Progress',
+    details: 'Redesigned and modernized the organization`s web presence. Features a public-facing streaming interface integrated with the Spotify API, and a secure, custom-built admin dashboard utilizing drag-and-drop functionality for seamless content management and scheduling. Note: Work In Progress',
     technologies: ['Next.js', 'Typescript', 'Supabase', 'Google OAuth', 'Spotify API'],
     github: '',
     figma: '',

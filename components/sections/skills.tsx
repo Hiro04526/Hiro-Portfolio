@@ -4,18 +4,19 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { GlobalStyles } from '@mui/material'
 import { 
-  siHtml5, 
   siReact, 
   siNextdotjs, 
   siNodedotjs, 
-  siCss3, 
   siTailwindcss, 
-  siJavascript, 
   siTypescript, 
   siPython,
-  siJupyter,
   siKotlin,
-  siDart 
+  siDart,
+  siFigma, 
+  siFramer,
+  siSupabase,
+  siGithub,
+  siVercel
 } from 'simple-icons/icons'
 
 import {
@@ -76,72 +77,90 @@ export function SkillSection() {
   const [showLevel, setShowLevel] = useState<boolean>(false)
 
   const skills: Skill[] = [
-    {
-      name: 'ReactJS',
-      icon: siReact,
-      description: 'Building dynamic web pages'
+    // --- DESIGN & ANIMATION ---
+    { 
+      name: 'Figma', 
+      icon: siFigma, 
+      description: 'Prototyping UI and UX designs' 
     },
-    {
-      name: 'Next.JS',
-      icon: siNextdotjs,
-      description: 'Creating fast & SEO-friendly websites'
+    { 
+      name: 'Framer Motion', 
+      icon: siFramer, 
+      description: 'Animating React user interfaces' 
     },
-    {
-      name: 'Node.JS',
-      icon: siNodedotjs,
-      description: 'Handling backend logic and APIs'
+
+    // --- WEB FUNDAMENTALS & STYLING ---
+    { 
+      name: 'Tailwind CSS', 
+      icon: siTailwindcss, 
+      description: 'Designing responsive pages' 
     },
-    {
-      name: 'HTML5',
-      icon: siHtml5,
-      description: 'Structuring content for web pages'
+    { 
+      name: 'TypeScript', 
+      icon: siTypescript, 
+      description: 'Writing safer & more organized code' 
     },
-    {
-      name: 'CSS3',
-      icon: siCss3,
-      description: 'Styling layouts and UI elements'
+
+    // --- MODERN WEB FRAMEWORKS ---
+    { 
+      name: 'ReactJS', 
+      icon: siReact, 
+      description: 'Building dynamic web pages' 
     },
-    {
-      name: 'JavaScript',
-      icon: siJavascript,
-      description: 'Adding interactivity to websites'
+    { 
+      name: 'Next.JS', 
+      icon: siNextdotjs, 
+      description: 'Creating fast & SEO-friendly websites' 
     },
-    {
-      name: 'TypeScript',
-      icon: siTypescript,
-      description: 'Writing safer & more organized code'
+
+    // --- BACKEND & DATABASE ---
+    { 
+      name: 'Node.JS', 
+      icon: siNodedotjs, 
+      description: 'Handling backend logic and APIs' 
     },
-    {
-      name: 'Tailwind CSS',
-      icon: siTailwindcss,
-      description: 'Designing responsive pages'
+    { 
+      name: 'Supabase', 
+      icon: siSupabase, 
+      description: 'Managing relational databases & Auth' 
     },
-    {
-      name: 'Python',
-      icon: siPython,
-      description: 'Scripting tasks and analyzing data'
+
+    // --- VERSION CONTROL & DEPLOYMENT ---
+    { 
+      name: 'Git & GitHub', 
+      icon: siGithub, 
+      description: 'Collaborating on code repositories' 
     },
-    {
-      name: 'Jupyter Notebook',
-      icon: siJupyter,
-      description: 'Testing & explaining Python code'
+    { 
+      name: 'Vercel', 
+      icon: siVercel, 
+      description: 'Deploying full-stack web applications' 
     },
-    {
-      name: 'Java',
-      icon: JavaIcon,
-      description: 'Building apps and practicing OOP'
+
+    // --- SCRIPTING & TOOLS ---
+    { 
+      name: 'Python', 
+      icon: siPython, 
+      description: 'Scripting tasks and analyzing data' 
     },
-    {
-      name: 'Kotlin',
-      icon: siKotlin,
-      description: 'Developing Android applications'
+
+    // --- OOP & MOBILE ---
+    { 
+      name: 'Java', 
+      icon: JavaIcon, 
+      description: 'Building apps and practicing OOP' 
     },
-    {
-      name: 'Dart',
-      icon: siDart,
-      description: 'Creating mobile apps using Flutter'
+    { 
+      name: 'Kotlin', 
+      icon: siKotlin, 
+      description: 'Developing Android applications' 
+    },
+    { 
+      name: 'Dart', 
+      icon: siDart, 
+      description: 'Creating mobile apps using Flutter' 
     }
-  ]  
+  ];  
 
   return (
     <>
